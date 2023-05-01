@@ -1,0 +1,84 @@
+.posterImage{
+    height: 80vh;}
+
+
+.posterImage > img {
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+
+.posterImage__overlay {
+    position: absolute;
+    padding: 5vw;
+    bottom: 0px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-end;  
+     align-items: flex-start;   
+      background-image: linear-gradient(rgb(0,0,0,0), rgb(0,0,0,1));
+    opacity: 1;
+    transition: opacity .3s;
+}   
+
+
+.posterImage__overlay:hover {
+    opacity: 1;
+}
+
+
+.posterImage__title {
+    font-weight: 900;
+    font-size: 4vw;
+    margin-bottom: 0.4rem;
+    text-align: left;
+}
+
+
+.posterImage__runtime {
+    font-size: 2vw;
+    margin-bottom: 1rem;
+}
+
+
+.posterImage__rating {
+    margin-left: 3vw;
+}
+
+
+.posterImage__description {
+    color: white;
+    font-style: 'Open Sans';
+    font-size: 1.5vw;
+    margin-bottom: 0.25rem;
+    display: flex;
+    text-align: left;
+    width: 100%;
+}
+
+
+ @media (min-width: 617px) {
+  .posterImage__overlay {
+    padding: 3vw;
+    height: 50%;
+    }
+
+
+  .posterImage__title {
+    font-size: 3vw;
+    }
+
+
+  .posterImage__runtime {
+    font-size: 1.5vw;
+    margin-bottom: 0.5rem;
+  }    
+  .posterImage__description {
+    font-size: 1.25vw;
+        width: 60%;
+    }
+} 
+
