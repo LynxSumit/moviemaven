@@ -2,4 +2,30 @@
     display: black;
     color: yellow;
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
+.logo_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 15px; 
+    height: 15vh;
+  
+  
+}
+.logo_container img{
+    height: 20vh;
+    margin: 25px;
+    width: 20vw;
+ 
+   
+}
+
+

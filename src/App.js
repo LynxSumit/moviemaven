@@ -2,6 +2,7 @@ import './App.css';
 // import { useState , useEffect } from 'react';
 import { BrowserRouter , Routes, Route } from 'react-router-dom';
 import SignIn from './Component/SignIn/SignIn';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './Component/Navbar/NavBar';
 import Home from './pages/Home/Home';
 import MovieList from './Component/MovieList/MovieList';
