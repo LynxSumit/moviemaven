@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import "./MovieDetail.css"
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import RelatedMovies from '../../Component/RelatedMovies/RelatedMovies'
+
 const MovieDetail = ({movie}) => {
     const {id} = useParams()
     const [moviedetail , setMoviedetail] = useState()
@@ -13,7 +15,8 @@ const MovieDetail = ({movie}) => {
         .then(data => setMoviedetail(data))
     }
   return (
-    <div className="movie">
+    <>
+        <div className="movie">
     <div className="movie__intro">
         <img className="movie__backdrop" src={`https://image.tmdb.org/t/p/original${moviedetail ? moviedetail.backdrop_path : "" }`} alt='movie' />
     </div>
@@ -79,6 +82,13 @@ const MovieDetail = ({movie}) => {
         }
     </div>
 </div>
+<div className='relatedMovie'>
+{
+
+    <RelatedMovies key={id} id={id}/>
+}
+</div>
+    </>
   )
 }
 

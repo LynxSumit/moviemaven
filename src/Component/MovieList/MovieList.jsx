@@ -21,6 +21,7 @@ const MovieList = () => {
         .then(res => res.json())
         .then(data => setMovieList(data.results))
     }
+   
 
     return (
         <div className="movie__list">
@@ -28,11 +29,12 @@ const MovieList = () => {
             <div className="list__cards">
                 {
                     movieList.map(movie => (
-                        <Card movie={movie} />
+                        <Card movie={movie} key={movie.id} />
                     ))
                 }
             </div>
         </div>
+
     )
 }
 

@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import "./Card.style.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import MovieMaven from "../../Assests/Movie Maven.png"
 
 const Card = ({ movie }) => {
+  const navigate = useNavigate()
+  const {id} = movie;
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -20,15 +23,16 @@ const Card = ({ movie }) => {
         </div>
       ) : (
         <Link
-          to={`/movie/${movie.id}`}
+          to={`/movie/${id}`}
           style={{ textDecoration: "none", color: "white" }}
         >
-          <div className="cards" key={movie.id}>
+          <div className="cards" key={id} >
             <img
               className="cards__img"
-              src={`https://image.tmdb.org/t/p/original${
+              src={movie.backdrop_path ?   `https://image.tmdb.org/t/p/original${
                 movie && movie.backdrop_path
-              }`}
+              }` : MovieMaven}
+              alt="movie_img"
             />
             <div className="cards__overlay">
               <div className="card__title">

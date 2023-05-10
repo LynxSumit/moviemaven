@@ -1,35 +1,42 @@
 import React, { useState } from "react";
 import "./SignIn.css";
-import { SignInWithGooglePopup } from "../../utils/firebase";
+import { SignInWithGooglePopup , createUserDocumentfromAuth } from "../../utils/firebase";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 const SignIn = () => {
   const googleLogger = async () => {
-    const response = await SignInWithGooglePopup();
-    console.log(response);
+    const {user} = await SignInWithGooglePopup();
+    createUserDocumentfromAuth(user)
+    setCurrentuser(user)
+    setTimeout(() => {
+      navigate("/")
+}, 900);
   };
+  const [ currentuser, setCurrentuser ] = useState("");
+ 
   const [ password, setPassword ] = useState("");
   const [ email, setEmail ] = useState("");
-const navigate = useNavigate()
-  const SubmitHandler = (e) => {
-    e.preventDefault();
-    if (!email || !password) {
-      alert("User crentials can't be empty");
-      return;
-    }
-    setEmail("")
-    setPassword("")
-    setTimeout(() => {
-            navigate("/")
-    }, 900);
-  };
+  const navigate = useNavigate()
+    const SubmitHandler = (e) => {
+      e.preventDefault();
+      if (!email || !password) {
+        alert("User crentials can't be empty");
+        return;
+      }
+      setEmail("")
+      setPassword("")
+      setTimeout(() => {
+              navigate("/")
+      }, 900);
+    };
   return (
     <div className="signin">
       <div className="logo_container">
         <img
           className="google_logo"
           onClick={googleLogger}
+          
           src="https://www.drupal.org/files/issues/2020-01-19/google_logo.png"
           alt="google_logo"
         />
@@ -57,7 +64,7 @@ const navigate = useNavigate()
           />
         </Form.Group>
         <Button variant="warning" type="submit">
-          Submit
+          Sign Up
         </Button>
       </Form>
     </div>

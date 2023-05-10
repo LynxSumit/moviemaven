@@ -1,2 +1,4 @@
 https://api.themoviedb.org/3/movie/550?api_key=ac17aa2c4595c25579449c8e623e3f30
 https://api.themoviedb.org/3/trending/all/day?api_key=ac17aa2c4595c25579449c8e623e3f30
+
+ <span><i class="fa-solid fa-filter" style={{color : "#fff"}}></i></span>
