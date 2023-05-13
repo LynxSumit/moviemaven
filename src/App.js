@@ -1,23 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+// import { useState , useEffect } from 'react';
+import { BrowserRouter , Routes, Route } from 'react-router-dom';
+import SignIn from './Component/SignIn/SignIn';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import Genre from './Component/GenresSection/Genre';
+import NavBar from './Component/Navbar/NavBar';
+import Home from './pages/Home/Home';
+import MovieList from './Component/MovieList/MovieList';
+import MovieDetail from './pages/MovieDetails/MovieDetail';
+import RelatedMovies from './Component/RelatedMovies/RelatedMovies';
+// import {LOGO} from "./Assests/LOGO.png"
+const App = () => {
 
-function App() {
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <BrowserRouter>
+    <NavBar/>
+      <Routes>
+<Route index element={<Home/>}></Route>
+<Route path='movie/:id' element={<MovieDetail/>}></Route>
+{/* <Route path='movie/:id' element={<RelatedMovies/>}></Route> */}
+<Route path='movies/:type' element={<MovieList/>}></Route>
+<Route path='/*' element={<h1>error page</h1>}></Route>
+{/* <Route path='profile' element={<h1>Profile page</h1>}/> */}
+<Route path="sign-in" element={<SignIn/>}/>
+{/* <Route path="movies/:genre" element={<Genre/>}/> */}
+
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }
