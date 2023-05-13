@@ -1,25 +1,23 @@
 import React from 'react'
-import { useState } from 'react';
-import { Link } from 'react-router-dom'
 
+import { Link } from 'react-router-dom'
+import {useContext} from "react"
+import { MovieContext } from '../../Context/MovieContext';
 import "./Navbar.style.scss"
 // import Genre from '../GenresSection/Genre';
 import Logo from "../../Assests/fotor_2023-5-10_15_47_54.png"
 
 const NavBar = () => {
-  
+  const {searchHandler , setSearch, search} = useContext(MovieContext)
 
- const [searchResults , setSearchresults] = useState([])
-  const [search , setSearch] = useState("")
+console.log(search)
   
   const changeHandler = (e) => {
     console.log(e.target.value)
     setSearch(e.target.value)
   }
-  // https://api.themoviedb.org/3/search/multi?api_key=ac17aa2c4595c25579449c8e623e3f30&language=en-US&$query={}&page=1&include_adult=false
-  const searchHandler = () => {
-fetch(`https://api.themoviedb.org/3/search/movie?api_key=ac17aa2c4595c25579449c8e623e3f30&language=en-US&query=${search}&page=1&include_adult=false`).then(res => res.json()).then(data=> console.log(data.results))
-  }
+ 
+
   return (
     <>
         <div className='header'>
@@ -33,7 +31,7 @@ fetch(`https://api.themoviedb.org/3/search/movie?api_key=ac17aa2c4595c25579449c8
   </div>
   <div className='headerRight'>
 <input  type='text' value={search} onChange={changeHandler}/>
-<Link to={`movie/${search}`}>
+<Link to={`search/movie/${search}`}>
 <span onClick={searchHandler}  ><i id='search-icon' className="fa-solid fa-magnifying-glass fa-2x"  style={{ cursor: "pointer" , padding: "10px"}}></i></span>
 </Link>
 
