@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter , Routes, Route } from 'react-router-dom';
 import SignIn from './Component/SignIn/SignIn';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Genre from './Component/GenresSection/Genre';
+// import Genre from './Component/GenresSection/Genre';
 import NavBar from './Component/Navbar/NavBar';
 import Home from './pages/Home/Home';
 import MovieList from './Component/MovieList/MovieList';
@@ -26,7 +26,7 @@ const App = () => {
 <Route path='/*' element={<h1>error page</h1>}></Route>
 {/* <Route path='profile' element={<h1>Profile page</h1>}/> */}
 <Route path="sign-in" element={<SignIn/>}/>
-<Route path="movies/:genre" element={<Genre/>}/>
+{/* <Route path="movies/:genre" element={<Genre/>}/> */}
 
       </Routes>
     </BrowserRouter>

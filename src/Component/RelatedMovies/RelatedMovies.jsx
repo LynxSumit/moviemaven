@@ -21,6 +21,10 @@ const RelatedMovies = ({id}) => {
         .then(res => res.json())
         .then(data => setMovieList(data.results))
     }
+    const navigate = useNavigate()
+    const ClickHandler = () => {
+navigate(`movie/${id}`)
+    }
   return (
     <div className="movie__list">
             <h2 className="list__title">{("Similar Movies")}</h2>
@@ -28,7 +32,7 @@ const RelatedMovies = ({id}) => {
                 {
                     movieList.map(movie => (
                  
-                       <Card  movie={movie}  key={movie.id} />
+                       <Card onClick={ClickHandler}  movie={movie}  key={movie.id} />
                       
                     ))
                 }
