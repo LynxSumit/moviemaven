@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import "./Navbar.style.scss"
 // import Genre from '../GenresSection/Genre';
 import Logo from "../../Assests/fotor_2023-5-10_15_47_54.png"
-import MovieList from '../MovieList/MovieList';
+
 const NavBar = () => {
   
 
