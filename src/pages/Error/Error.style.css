@@ -1,0 +1,15 @@
+.err{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20vh;
+}
+.err h2{
+    color: #cb88e1;
+    font-size: 58px;
+    font-weight: 500;
+}
+.err lord-icon{
+   font-size: medium;
+}

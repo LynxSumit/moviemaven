@@ -13,16 +13,20 @@ return (
     
     
     <div>
-        {<div className="movie__list">
-            <h2 className="list__title">{(search).toUpperCase()}</h2>
+        {
+           
+            <div className="movie__list">
+            <h2 className="list__title">{search ? (search).toUpperCase() : "No Movie Found"}</h2>
             <div className="list__cards">
                 {
-                    searchResults.map(movie => (
+                   searchResults.map(movie => (
                         <Card movie={movie} key={movie.id} />
-                    ))
+                    )) 
                 }
             </div>
-        </div>}
+        </div>
+        }
+       
     </div>
   
         

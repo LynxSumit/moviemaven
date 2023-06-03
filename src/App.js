@@ -10,6 +10,8 @@ import MovieList from './Component/MovieList/MovieList';
 import MovieDetail from './pages/MovieDetails/MovieDetail';
 import {useContext} from 'react'
 import { MovieContext } from './Context/MovieContext';
+import ErrorPage from './pages/Error/ErrorPage';
+import RelatedMovies from './Component/RelatedMovies/RelatedMovies';
 // import {LOGO} from "./Assests/LOGO.png"
 const App = () => {
 const {search} = useContext(MovieContext)
@@ -24,8 +26,8 @@ const {search} = useContext(MovieContext)
 <Route path='movie/:id' element={<MovieDetail/>}></Route>
 {/* <Route path='movie/:id' element={<RelatedMovies/>}></Route> */}
 <Route path='movies/:type' element={<MovieList/>}></Route>
-<Route path='/*' element={<h1>error page</h1>}></Route>
-{/* <Route path='profile' element={<h1>Profile page</h1>}/> */}
+<Route path='movie/*' element={<ErrorPage/>}></Route>
+<Route path='movie/:id' element={<RelatedMovies/>}/>
 <Route path="sign-in" element={<SignIn/>}/>
 <Route path={`search/movie/${search}`} element={<Search/>}/>
 
