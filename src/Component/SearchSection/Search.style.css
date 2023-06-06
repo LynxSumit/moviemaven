@@ -1,6 +1,8 @@
 .movie__list {
+    
     padding: 0 3rem 3rem 3rem;
     height: 100vh;
+   
 }
 
 .list__title {
@@ -9,8 +11,9 @@ margin:  2.5rem;
 }
 
 .list__cards {
+   
     display: flex;
-    flex-wrap:wrap ;
+   flex-wrap: wrap-reverse;
     justify-content: center;
 }
 body{

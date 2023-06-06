@@ -1,72 +1,77 @@
 import React, { useState } from "react";
 import "./SignIn.css";
-import { SignInWithGooglePopup , createUserDocumentfromAuth } from "../../utils/firebase";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import { useNavigate } from "react-router-dom";
+import {
+  SignInWithGooglePopup,
+ auth
+} from "../../utils/firebase";
+// import { useNavigate } from "react-router-dom";
+import SignUp from "./SignUp";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import AuthStatus from "./AuthStatus";
+
 const SignIn = () => {
   const googleLogger = async () => {
-    const {user} = await SignInWithGooglePopup();
-    createUserDocumentfromAuth(user)
-    setCurrentuser(user)
-    setTimeout(() => {
-      navigate("/")
-}, 900);
+ await SignInWithGooglePopup();   
   };
-  const [ currentuser, setCurrentuser ] = useState("");
- 
-  const [ password, setPassword ] = useState("");
-  const [ email, setEmail ] = useState("");
-  const navigate = useNavigate()
-    const SubmitHandler = (e) => {
-      e.preventDefault();
-      if (!email || !password) {
-        alert("User crentials can't be empty");
-        return;
-      }
-      setEmail("")
-      setPassword("")
-      setTimeout(() => {
-              navigate("/")
-      }, 900);
-    };
+const [email , setEmail] = useState("")
+const [password , setPassword] = useState("")
+  // const navigate = useNavigate();
+  const SubmitHandler = async (e) => {
+    e.preventDefault();
+    
+     await signInWithEmailAndPassword(auth,email,password).then((userCred)=> {console.log(userCred)}).catch((err)=>console.log(err.message))
+    setEmail("")
+       setPassword("")
+    
+    if (!email || !password) {
+      alert("User crentials can't be empty");
+      return;
+    }
+   
+
+    // setTimeout(() => {
+    //   navigate("/");
+    // }, 900);
+  };
+
+  // let inp = document.getElementById("inp")
+  // let check = document.getElementById("check")
+  
   return (
-    <div className="signin">
-      <div className="logo_container">
-        <img
-          className="google_logo"
-          onClick={googleLogger}
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6">
+          <h3 className="text-center">I already have an account</h3>
+          <form onSubmit={SubmitHandler}>
+  <div className="mb-3">
+    <label htmlFor="inp1" className="form-label">Email address</label>
+    <input  onChange={(e)=> setEmail(e.target.value)} value={email}  type="email"  className="form-control" id="inp1" aria-describedby="emailHelp"/>
+  </div>
+  <div className="mb-3">
+    <label htmlFor="inp" className="form-label">Password</label>
+    <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)}   className="form-control" id="inp"/>
+  </div>
+  <div className="mb-3 form-check"  >
+    <input type="checkbox" className="form-check-input"   id="check"/>
+    <label className="form-check-label" htmlFor="check">Check me out</label>
+  </div>
+<div className="btn-container">
+<button type="submit" className="btn btn-light"  >Submit</button>
+  <button type="button" className="btn btn-light" onClick={googleLogger}>
+    <i className="fa-brands fa-google "></i>  Sign in with Google
+  </button>
+</div>
+</form>
+
+         
           
-          src="https://www.drupal.org/files/issues/2020-01-19/google_logo.png"
-          alt="google_logo"
-        />
+        </div>
+        <div className="col-md-6">
+          <h3>I don't have an account</h3>
+          <SignUp/>
+        </div>
       </div>
-
-      <Form onSubmit={SubmitHandler}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            type="email"
-            placeholder="Enter email here"
-            style={{ width: "300px" }}
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            value={password}
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-        </Form.Group>
-        <Button variant="warning" type="submit">
-          Sign Up
-        </Button>
-      </Form>
+      <AuthStatus/>
     </div>
   );
 };

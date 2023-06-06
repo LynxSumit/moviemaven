@@ -7,7 +7,7 @@ import "./Navbar.style.scss"
 // import Genre from '../GenresSection/Genre';
 import Logo from "../../Assests/fotor_2023-5-10_15_47_54.png"
 
-const NavBar = () => {
+const NavBar = ({authUser}) => {
   const {searchHandler , setSearch, search} = useContext(MovieContext)
 
 console.log(search)
@@ -36,7 +36,7 @@ console.log(search)
 </Link>
 
 
-  <Link to="/sign-in" style={{textDecoration: "none"}}> <span>Sign In</span></Link>
+  <Link to="/sign-in" style={{textDecoration: "none"}}> <span>{"Sign In"}</span></Link>
   </div>
         </div>
     </>
